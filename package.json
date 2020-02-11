@@ -1,34 +1,23 @@
 {
   "name": "node-express-tdd",
   "version": "1.0.0",
-  "description": "Starter Kit for developing TDD based node-express application ",
+  "description": "Starter Kit for developing node-express application ",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
     "start": "node index.js"
   },
   "keywords": [
-    "TDD",
     "Javascript",
     "Node",
     "JS",
-    "Express",
-    "JS"
+    "Express"
   ],
   "author": "Gowtham Ravichandran",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "jest": "^24.9.0",
-    "supertest": "^4.0.2"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "coverageReporters":["lcov"]
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   }
 }

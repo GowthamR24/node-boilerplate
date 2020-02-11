@@ -1,19 +1,26 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+var bodyParser = require('body-parser');
+const cors = require('cors');
+const routes = require('./routes');
 const port = 3000;
-const bodyParser = require('body-parser');
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.json({message:'Hello World!'}));
+// enable cors
+app.use(cors());
+app.options('*', cors());
 
-app.post('/name', (req,res) =>{
-    res.json({name:req.body.name});
-})
+// v1 api routes
+app.use('/expressapp', routes);
 
-app.listen(port,()=>{
-    console.log(`Server Listening in Port ${port}`);
-})
+// send back a 404 error for any unknown api request
+app.use((req, res, next) => {
+    res.sendStatus(404);
+});
 
-module.exports = app;
+app.listen(port, () => console.log(`Application listening on port ${port}!`))
