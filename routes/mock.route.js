@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const { mockService } = require('./../services')
 
 router.get('/', async (req, res, next)=>{
-    res.send("I'm working !!")
+    mockService().then((data)=>{
+        res.send(data)
+    })
 });
 
 module.exports = router;
